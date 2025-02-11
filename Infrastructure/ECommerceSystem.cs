@@ -18,7 +18,7 @@ public class ECommerceSystem
     }
     public Order PlaceOrder(Customer customer, ShoppingCart cart)
     {
-        var orderId ="1";
+        var orderId =Guid.NewGuid().ToString();
         var order = new Order(orderId, customer, cart.GetCartItems());
         orders.Add(order);
         return order;
