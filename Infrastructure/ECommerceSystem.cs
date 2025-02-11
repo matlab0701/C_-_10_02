@@ -18,8 +18,12 @@ public class ECommerceSystem
     }
     public Order PlaceOrder(Customer customer, ShoppingCart cart)
     {
-        var orderId =Guid.NewGuid().ToString();
-        var order = new Order(orderId, customer, cart.GetCartItems());
+        decimal tottalAmount = 0;
+        foreach (var item in cart.cartItems)
+        {
+            tottalAmount += item.Key.Price * item.Value;
+        }
+        var order = new Order(customer, cart.GetCartItems(), tottalAmount);
         orders.Add(order);
         return order;
     }
@@ -40,7 +44,8 @@ public class ECommerceSystem
     {
         foreach (var order in orders)
         {
-            Console.WriteLine($"Заказ {order.OrderId} - {order.Customers.Name} - Статус: {order.Status} - Сумма: {order.TotalAmount}");
+            Console.WriteLine($"Заказ {order.OrderId} - {order.Customers.Name} - Статус: {order.Status} - Сумма: {order.TotalAmount} - дата: {order.OrderDate}");
+            System.Console.WriteLine();
         }
     }
 }

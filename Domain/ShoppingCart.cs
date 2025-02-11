@@ -6,14 +6,8 @@ public class ShoppingCart
 
     public void AddToCart(Product product, int quantity)
     {
-        if (cartItems.ContainsKey(product))
-        {
-            cartItems[product] += quantity;
-        }
-        else
-        {
-            cartItems[product] = quantity;
-        }
+        cartItems.Add(product,quantity);
+       System.Console.WriteLine("Succes");
     }
 
     public Dictionary<Product, int> GetCartItems()

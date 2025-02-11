@@ -4,9 +4,9 @@ public class Customer
 {
     public string? CustomerId { get; set; }
     public string? Name { get; set; }
-    public Customer(string customerId,string name)
+    public Customer(string name)
     {
-        CustomerId= customerId;
-        Name=name;
+        CustomerId = Guid.NewGuid().ToString();
+        Name = name;
     }
 }
